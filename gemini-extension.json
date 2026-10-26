@@ -1,0 +1,5 @@
+{
+  "name": "skillsafe",
+  "version": "1.0.0",
+  "description": "Scan agent skills for security issues before you install them, and check your own skills before you publish them, with the free SkillSafe scanner."
+}

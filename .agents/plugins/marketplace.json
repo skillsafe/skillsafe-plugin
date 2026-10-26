@@ -1,0 +1,12 @@
+{
+  "name": "skillsafe",
+  "interface": { "displayName": "SkillSafe" },
+  "plugins": [
+    {
+      "name": "skillsafe",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Developer Tools"
+    }
+  ]
+}
