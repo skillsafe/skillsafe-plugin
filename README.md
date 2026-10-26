@@ -68,6 +68,11 @@ You can also manage your skills and apps in the
 [web dashboard](https://skillsafe.ai/dashboard/) or the
 [AI SkillSafe desktop app](https://app.skillsafe.ai/).
 
+## Support
+
+Email [support@skillsafe.ai](mailto:support@skillsafe.ai) (see [skillsafe.ai/support](https://skillsafe.ai/support/)), or
+[open an issue](https://github.com/skillsafe/skillsafe-plugin/issues) in this repository.
+
 ## License
 
 MIT
