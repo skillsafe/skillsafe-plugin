@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skillsafe",
-  "version": "1.0.0",
-  "description": "Scan agent skills for security issues before you install them, and check your own skills before you publish them, with the free SkillSafe scanner.",
+  "version": "2.0.0",
+  "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
   "author": {
     "name": "SkillSafe",
     "url": "https://skillsafe.ai"
@@ -10,22 +10,33 @@
   "homepage": "https://skillsafe.ai",
   "repository": "https://github.com/skillsafe/skillsafe-plugin",
   "license": "MIT",
-  "keywords": ["security", "skills", "scanner", "supply-chain"],
+  "keywords": [
+    "skills",
+    "backup",
+    "sync",
+    "deploy",
+    "apps",
+    "hosting"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "SkillSafe",
-        "shortDescription": "Scan skills before using them",
-        "longDescription": "Third-party agent skills can carry prompt injection, credential theft, data exfiltration, or hidden persistence. SkillSafe scans them before they reach your machine.\n\nThis plugin adds two skills:\n\n- scan-before-install: give it a GitHub URL and it runs the free SkillSafe scanner on the skill or plugin there, then reports a grade (A+ to F), the number of findings, and a link to the full report with every finding and a bill of materials (network destinations, environment variables, commands, file access). It only scans; installing stays your decision.\n- check-skill-before-publishing: checks a skill you wrote, explains each finding, helps you fix it, and points you to where to publish.\n\nNo account or API key is needed. The plugin sends requests only to api.skillsafe.ai: a public GitHub URL for the first skill, and, with your confirmation, the text files of your own skill for the second. Files sent for checking are analyzed and not stored.",
+        "shortDescription": "Back up skills, deploy apps",
+        "longDescription": "SkillSafe keeps your agent skills safe and puts them to work.\n\nBack up and manage your skills: save the skills you've written to your private SkillSafe account. Every backup is a new version, nothing is shared, and you can list your backups and restore any version on this or another computer. Moving to a new machine takes one sign-in and one restore.\n\nDeploy apps: turn your skills into a hosted web app at your-app.skillsafe.ai that runs in any browser, including on your phone. Keep it private for yourself, invite specific people by email, share a link, or list it in the public directory. Every upload is security-scanned.\n\nThe plugin has three skills: skillsafe-sign-in (connect your account through a browser sign-in), back-up-skills, and deploy-app. Signing up is free, and you can deploy without an account: the app goes live on a temporary account, and verifying your email within 7 days keeps it and adds free credits for running it. All requests go to api.skillsafe.ai with your own API key, stored only in ~/.skillsafe/config.json.",
         "developerName": "SkillSafe",
         "category": "Developer Tools",
-        "capabilities": ["Read"],
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
         "websiteURL": "https://skillsafe.ai",
         "privacyPolicyURL": "https://skillsafe.ai/privacy-policy/",
         "termsOfServiceURL": "https://skillsafe.ai/terms-of-service/",
         "defaultPrompt": [
-          "Is this skill safe to install? https://github.com/OWNER/REPO",
-          "Check my skill in ./my-skill before I publish it."
+          "Back up my skills to SkillSafe.",
+          "Restore my SkillSafe skills on this computer.",
+          "Turn my skill into a private web app I can use from my phone."
         ],
         "brandColor": "#F0AD00",
         "composerIcon": "./assets/icon.png",

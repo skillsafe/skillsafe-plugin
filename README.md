@@ -1,27 +1,24 @@
 # SkillSafe plugin
 
-Scan agent skills for security issues before you install them, and check your
-own skills before you publish them, with the free
-[SkillSafe](https://skillsafe.ai) scanner. Works in Codex and Gemini CLI. No
-account or API key is needed.
+Back up your agent skills privately, with version history, and restore them on
+any machine. Turn them into hosted web apps for yourself or to share. Works in
+Codex and Gemini CLI.
 
-Third-party skills can carry prompt injection, credential theft, data
-exfiltration, or hidden persistence. SkillSafe checks for these patterns and
-reports what a skill can actually do: the network destinations it contacts,
-the environment variables it reads, the commands it runs, and the files it
-touches.
+## What you can ask for
+
+- "Back up my skills to SkillSafe."
+- "Restore my SkillSafe skills on this computer."
+- "Show my backed-up skills and their versions."
+- "Turn my skill into a private web app I can use from my phone."
+- "Share my app with alice@example.com."
 
 ## Skills
 
 | Skill | What it does |
 |---|---|
-| `scan-before-install` | Given a GitHub URL, scans the skill or plugin there and reports a grade (A+ to F), the number of findings, and a link to the full report. It only scans; installing stays your decision. |
-| `check-skill-before-publishing` | Checks a skill you wrote, explains each finding, helps you fix it, and points you to where you can publish it. |
-
-Try asking:
-
-- "Is this skill safe to install? https://github.com/OWNER/REPO"
-- "Check my skill in ./my-skill before I publish it."
+| `skillsafe-sign-in` | Connects your SkillSafe account through a browser sign-in and stores the key on this machine. Signing up is free. No account yet? It can mint a temporary key so you can deploy an app right away; verify your email within 7 days to keep it. |
+| `back-up-skills` | Saves your skills to your private account. Every backup is a new version; unchanged skills are skipped. Lists your backups, restores any version into a folder, and deletes a backup when you ask. |
+| `deploy-app` | Turns your skills (or a prompt) into a web app at `https://your-app.skillsafe.ai/`: private for you, shared with specific people by email, open to anyone with the link, or listed publicly. |
 
 ## Install
 
@@ -38,27 +35,38 @@ codex plugin add skillsafe
 gemini extensions install https://github.com/skillsafe/skillsafe-plugin
 ```
 
+Then ask your agent to sign in to SkillSafe, or just ask for a backup and it
+will sign you in first.
+
+**No account?** Ask your agent to deploy an app anyway. It runs on a temporary
+account and you get a live link immediately. The temporary account is deleted
+after 7 days unless you verify your email; verifying keeps the app at the same
+address, adds free starting credits for its AI features, and lets you make it
+private or invite people. Your agent reminds you until you do.
+
 ## What the plugin sends, and where
 
-The plugin contains instructions only: no scripts, hooks, or MCP servers. When
-a skill runs, the agent makes these requests, all to `api.skillsafe.ai`:
+The plugin contains instructions only: no hooks, MCP servers, or background
+processes. When you use a skill, your agent makes HTTPS requests to
+`api.skillsafe.ai` with your own API key:
 
-| Skill | Request | What is sent |
+| Skill | What is sent | Where it goes |
 |---|---|---|
-| `scan-before-install` | `POST https://api.skillsafe.ai/v1/scan/github` | The public GitHub repository URL and, optionally, a folder path. SkillSafe fetches the public repository itself; nothing from your machine is uploaded. Scan results are stored and shown on skillsafe.ai. |
-| `check-skill-before-publishing` | `POST https://api.skillsafe.ai/v1/scan/files` | The text contents of the files in your skill folder, sent only after you confirm. Credential files such as `.env` are excluded. The files are analyzed and returned a result; they are not stored. |
+| `skillsafe-sign-in` | A sign-in request labelled with this computer's hostname, which you approve in your browser; or a request for a temporary key; and, if you choose to verify, your email address and the code sent to it. | The resulting API key is saved in `~/.skillsafe/config.json`, readable only by you. |
+| `back-up-skills` | The files of each skill you back up. `.env*` files, `.DS_Store`, and `.git`, `node_modules`, `__pycache__`, `.venv`, `venv` folders are never sent. | Stored privately in your account. Nobody else can see them unless you share them yourself. |
+| `deploy-app` | The app's agent prompt (from your skills or written for you) and its web page files. | Hosted at `your-app.skillsafe.ai`, visible according to the visibility you choose (private by default). Every upload is security-scanned. |
 
-Nothing is published to SkillSafe unless you do it yourself afterwards, from
-the [desktop app](https://app.skillsafe.ai/) or the
-[web dashboard](https://skillsafe.ai/dashboard/).
+Running an app's AI uses SkillSafe credits, paid by whoever runs it. New
+accounts start with free credits. See [pricing](https://skillsafe.ai/pricing/),
+the [privacy policy](https://skillsafe.ai/privacy-policy/), and the
+[terms of service](https://skillsafe.ai/terms-of-service/).
 
-See the [privacy policy](https://skillsafe.ai/privacy-policy/) and the
-[published detection rules](https://skillsafe.ai/security/).
+To sign out, delete `~/.skillsafe/config.json`; to revoke the key, remove it
+at [skillsafe.ai/account/keys](https://skillsafe.ai/account/keys).
 
-## Limits
-
-A clean grade means no known risky patterns were found, not that a skill is
-guaranteed safe. Scans are point-in-time; re-scan when a repository changes.
+You can also manage your skills and apps in the
+[web dashboard](https://skillsafe.ai/dashboard/) or the
+[AI SkillSafe desktop app](https://app.skillsafe.ai/).
 
 ## License
 
