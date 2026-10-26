@@ -1,6 +1,6 @@
 {
   "name": "skillsafe",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
   "mcpServers": {
     "skillsafe": {
