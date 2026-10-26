@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skillsafe",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
   "author": {
     "name": "SkillSafe",
@@ -23,7 +23,7 @@
       "interface": {
         "displayName": "SkillSafe",
         "shortDescription": "Back up skills, deploy apps",
-        "longDescription": "SkillSafe keeps your agent skills safe and puts them to work.\n\nBack up and manage your skills: save the skills you've written to your private SkillSafe account. Every backup is a new version, nothing is shared, and you can list your backups and restore any version on this or another computer. Moving to a new machine takes one sign-in and one restore.\n\nDeploy apps: turn your skills into a hosted web app at your-app.skillsafe.ai that runs in any browser, including on your phone. Keep it private for yourself, invite specific people by email, share a link, or list it in the public directory. Every upload is security-scanned.\n\nThe plugin has three skills: skillsafe-sign-in (connect your account through a browser sign-in, or deploy first on a temporary account and verify your email within 7 days to keep it), back-up-skills, and deploy-app. All requests go to api.skillsafe.ai with your own API key, stored only in ~/.skillsafe/config.json.",
+        "longDescription": "SkillSafe keeps your agent skills safe and puts them to work.\n\nBack up and manage your skills: save the skills you've written to your private SkillSafe account. Every backup is a new version, nothing is shared, and you can list your backups and restore any version on this or another computer. Moving to a new machine takes one sign-in and one restore.\n\nDeploy apps: turn your skills into a hosted web app at your-app.skillsafe.ai that runs in any browser, including on your phone. Keep it private for yourself, invite specific people by email, share a link, or list it in the public directory. Every upload is security-scanned.\n\nFind and check skills: the SkillSafe connector searches the SkillSafe registry, recommends skills for a task, shows a skill's details and install commands, and scans skill files or MCP tool definitions for prompt injection, credential theft, and data exfiltration. It needs no sign-in.\n\nSkills included: skillsafe-sign-in (connect your account through a browser sign-in, or deploy first on a temporary account and verify your email within 7 days to keep it), back-up-skills, and deploy-app. Requests go to api.skillsafe.ai; the skills use your own API key, stored only in ~/.skillsafe/config.json.",
         "developerName": "SkillSafe",
         "category": "Developer Tools",
         "capabilities": [
@@ -35,7 +35,7 @@
         "termsOfServiceURL": "https://skillsafe.ai/terms-of-service/",
         "defaultPrompt": [
           "Back up my skills to SkillSafe.",
-          "Restore my SkillSafe skills on this computer.",
+          "Find a SkillSafe skill for making slide decks.",
           "Turn my skill into a private web app I can use from my phone."
         ],
         "brandColor": "#2A3A99",

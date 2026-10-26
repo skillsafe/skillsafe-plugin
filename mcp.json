@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "skillsafe": {
+      "type": "streamable-http",
+      "url": "https://api.skillsafe.ai/mcp"
+    }
+  }
+}

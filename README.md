@@ -1,8 +1,8 @@
 # SkillSafe plugin
 
 Back up your agent skills privately, with version history, and restore them on
-any machine. Turn them into hosted web apps for yourself or to share. Works in
-Codex and Gemini CLI.
+any machine. Turn them into hosted web apps for yourself or to share. Find and
+security-check skills in the SkillSafe registry. Works in Codex and Gemini CLI.
 
 ## What you can ask for
 
@@ -11,6 +11,8 @@ Codex and Gemini CLI.
 - "Show my backed-up skills and their versions."
 - "Turn my skill into a private web app I can use from my phone."
 - "Share my app with alice@example.com."
+- "Find a SkillSafe skill for making slide decks."
+- "Scan these skill files for prompt injection before I install them."
 
 ## Skills
 
@@ -19,6 +21,20 @@ Codex and Gemini CLI.
 | `skillsafe-sign-in` | Connects your SkillSafe account through a browser sign-in and stores the key on this machine. Signing up is free. No account yet? It can mint a temporary key so you can deploy an app right away; verify your email within 7 days to keep it. |
 | `back-up-skills` | Saves your skills to your private account. Every backup is a new version; unchanged skills are skipped. Lists your backups, restores any version into a folder, and deletes a backup when you ask. |
 | `deploy-app` | Turns your skills (or a prompt) into a web app at `https://your-app.skillsafe.ai/`: private for you, shared with specific people by email, open to anyone with the link, or listed publicly. |
+
+### SkillSafe connector (MCP)
+
+The plugin also connects your agent to the SkillSafe MCP server at
+`https://api.skillsafe.ai/mcp`, which needs no sign-in:
+
+| Tool | What it does |
+|---|---|
+| `search_skills` | Search the SkillSafe registry. |
+| `recommend_skills` | Recommend skills for a task you describe. |
+| `get_skill_info` | Show a skill's details, versions, and scan status. |
+| `install_skill` | Give the commands to install a skill (recorded as an install). |
+| `scan_skill` | Scan skill files for prompt injection, credential theft, exfiltration, and other risks. |
+| `scan_mcp_config` | Scan MCP tool definitions or server configs for poisoning patterns. |
 
 ## Install
 
@@ -46,14 +62,15 @@ private or invite people. Your agent reminds you until you do.
 
 ## What the plugin sends, and where
 
-The plugin contains instructions only: no hooks, MCP servers, or background
-processes. When you use a skill, your agent makes HTTPS requests to
-`api.skillsafe.ai` with your own API key:
+The plugin contains instructions and one remote MCP server: no hooks, local
+processes, or background tasks. When you use it, your agent makes HTTPS
+requests to `api.skillsafe.ai`; the skills send your own API key:
 
 | Skill | What is sent | Where it goes |
 |---|---|---|
 | `skillsafe-sign-in` | A sign-in request labelled with this computer's hostname, which you approve in your browser; or a request for a temporary key; and, if you choose to verify, your email address and the code sent to it. | The resulting API key is saved in `~/.skillsafe/config.json`, readable only by you. |
 | `back-up-skills` | The files of each skill you back up. `.env*` files, `.DS_Store`, and `.git`, `node_modules`, `__pycache__`, `.venv`, `venv` folders are never sent. | Stored privately in your account. Nobody else can see them unless you share them yourself. |
+| SkillSafe connector (MCP) | Your search text or task description; skill names you ask about; for the scan tools, the file contents or MCP tool definitions you ask it to scan. No API key. | Scans are analyzed and returned; they are not stored. `install_skill` adds one to the skill's install count. |
 | `deploy-app` | The app's agent prompt (from your skills or written for you) and its web page files. | Hosted at `your-app.skillsafe.ai`, visible according to the visibility you choose (private by default). Every upload is security-scanned. |
 
 Running an app's AI uses SkillSafe credits, paid by whoever runs it. New
