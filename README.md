@@ -51,6 +51,9 @@ codex plugin add skillsafe
 gemini extensions install https://github.com/skillsafe/skillsafe-plugin
 ```
 
+In Gemini CLI the extension adds the same three skills and the SkillSafe connector,
+plus a short `GEMINI.md` that tells Gemini when to use them.
+
 Then ask your agent to sign in to SkillSafe, or just ask for a backup and it
 will sign you in first.
 

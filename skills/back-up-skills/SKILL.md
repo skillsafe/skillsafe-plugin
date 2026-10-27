@@ -32,10 +32,11 @@ up, or offer the ones found in the usual places:
 
 - this agent's personal skills folder (for example `~/.agents/skills/`,
   `~/.codex/skills/`, or `~/.gemini/skills/`)
-- the current project's skills folder (for example `.agents/skills/`)
+- the current project's skills folder (for example `.agents/skills/` or
+  `.gemini/skills/`)
 
 ```bash
-find ~/.agents/skills ~/.codex/skills ~/.gemini/skills .agents/skills \
+find ~/.agents/skills ~/.codex/skills ~/.gemini/skills .agents/skills .gemini/skills \
   -maxdepth 2 -name SKILL.md 2>/dev/null
 ```
 

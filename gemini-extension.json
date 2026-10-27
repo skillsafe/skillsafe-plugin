@@ -1,7 +1,8 @@
 {
   "name": "skillsafe",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
+  "contextFileName": "GEMINI.md",
   "mcpServers": {
     "skillsafe": {
       "httpUrl": "https://api.skillsafe.ai/mcp"
