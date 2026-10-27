@@ -32,7 +32,7 @@ The plugin also connects your agent to the SkillSafe MCP server at
 | `search_skills` | Search the SkillSafe registry. |
 | `recommend_skills` | Recommend skills for a task you describe. |
 | `get_skill_info` | Show a skill's details, versions, and scan status. |
-| `install_skill` | Give the commands to install a skill (recorded as an install). |
+| `get_install_commands` | Give the commands to install a skill; installs nothing itself. |
 | `scan_skill` | Scan skill files for prompt injection, credential theft, exfiltration, and other risks. |
 | `scan_mcp_config` | Scan MCP tool definitions or server configs for poisoning patterns. |
 
@@ -70,7 +70,7 @@ requests to `api.skillsafe.ai`; the skills send your own API key:
 |---|---|---|
 | `skillsafe-sign-in` | A sign-in request labelled with this computer's hostname, which you approve in your browser; or a request for a temporary key; and, if you choose to verify, your email address and the code sent to it. | The resulting API key is saved in `~/.skillsafe/config.json`, readable only by you. |
 | `back-up-skills` | The files of each skill you back up. `.env*` files, `.DS_Store`, and `.git`, `node_modules`, `__pycache__`, `.venv`, `venv` folders are never sent. | Stored privately in your account. Nobody else can see them unless you share them yourself. |
-| SkillSafe connector (MCP) | Your search text or task description; skill names you ask about; for the scan tools, the file contents or MCP tool definitions you ask it to scan. No API key. | Scans are analyzed and returned; they are not stored. `install_skill` adds one to the skill's install count. |
+| SkillSafe connector (MCP) | Your search text or task description; skill names you ask about; for the scan tools, the file contents or MCP tool definitions you ask it to scan. No API key. | Scans are analyzed and returned; they are not stored. |
 | `deploy-app` | The app's agent prompt (from your skills or written for you) and its web page files. | Hosted at `your-app.skillsafe.ai`, visible according to the visibility you choose (private by default). Every upload is security-scanned. |
 
 Running an app's AI uses SkillSafe credits, paid by whoever runs it. New
