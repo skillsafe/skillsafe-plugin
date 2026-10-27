@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skillsafe",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
   "author": {
     "name": "SkillSafe",
@@ -93,7 +93,7 @@
           ]
         },
         "commerce": false,
-        "demo_recording_url": "https://youtu.be/zYtR93lYzIU"
+        "demo_recording_url": "https://www.youtube.com/watch?v=xMadt3TBTeQ"
       },
       "publication": {
         "release_notes": "Adds the SkillSafe connector (remote MCP, no sign-in) to search the SkillSafe skill registry, recommend skills for a task, show skill details and install commands, and scan skill files or MCP tool definitions for prompt injection, credential theft, and exfiltration. Includes skills to back up personal skills and deploy hosted apps."

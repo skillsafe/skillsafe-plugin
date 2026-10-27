@@ -4,6 +4,8 @@ Back up your agent skills privately, with version history, and restore them on
 any machine. Turn them into hosted web apps for yourself or to share. Find and
 security-check skills in the SkillSafe registry. Works in Codex and Gemini CLI.
 
+[![Watch the SkillSafe plugin demo (1:11, with narration)](assets/demo-thumbnail.jpg)](https://www.youtube.com/watch?v=xMadt3TBTeQ)
+
 ## What you can ask for
 
 - "Back up my skills to SkillSafe."
