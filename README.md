@@ -90,6 +90,10 @@ You can also manage your skills and apps in the
 [web dashboard](https://skillsafe.ai/dashboard/) or the
 [AI SkillSafe desktop app](https://app.skillsafe.ai/).
 
+## About
+
+SkillSafe is a product owned and operated by Hi1 Capital LLC.
+
 ## Support
 
 Email [support@skillsafe.ai](mailto:support@skillsafe.ai) (see [skillsafe.ai/support](https://skillsafe.ai/support/)), or

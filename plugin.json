@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skillsafe",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Back up your agent skills privately with version history and restore them on any machine, and deploy them as hosted web apps for yourself or to share.",
   "author": {
-    "name": "SkillSafe",
+    "name": "SkillSafe (Hi1 Capital LLC)",
     "url": "https://skillsafe.ai"
   },
   "homepage": "https://skillsafe.ai",
