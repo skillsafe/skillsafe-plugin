@@ -2,7 +2,11 @@
 
 Back up your agent skills privately, with version history, and restore them on
 any machine. Turn them into hosted web apps for yourself or to share. Find and
-security-check skills in the SkillSafe registry. Works in Codex and Gemini CLI.
+security-check skills in the [SkillSafe skill registry](https://skillsafe.ai/).
+Works in Codex and Gemini CLI.
+
+Browse security-scanned skills at [skillsafe.ai/skills](https://skillsafe.ai/skills/)
+and hosted apps at [skillsafe.ai/apps](https://skillsafe.ai/apps/).
 
 [![Watch the SkillSafe plugin demo (1:11, with narration)](assets/demo-thumbnail.jpg)](https://www.youtube.com/watch?v=xMadt3TBTeQ)
 
